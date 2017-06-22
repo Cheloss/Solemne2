@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'autofixture',
     'bootstrapform',
-    'nerflix'
+    'unab'
 ]
 
 MIDDLEWARE = [

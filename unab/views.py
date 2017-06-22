@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-from nerflix.models import Movie
+from unab.models import Movie
 from django.shortcuts import render, get_object_or_404
-from nerflix.forms import MovieForm
+from unab.forms import MovieForm
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 

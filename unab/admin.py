@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from django.contrib import admin
-from nerflix.models import Movie, Category
+from unab.models import Movie, Category
 
 class MovieAdmin(admin.ModelAdmin):
     list_display = ('name','anio','sort_order','id')

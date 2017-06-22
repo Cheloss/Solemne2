@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from nerflix import views
+from unab import views
 urlpatterns = [
     url(r'^list/$', views.movie_list, name='movie_list'),
     url(r'^new/$', views.movie_form, name='movie_create'),

@@ -34,7 +34,7 @@ class Migration(migrations.Migration):
                 ('sort_order', models.IntegerField()),
                 ('created', models.DateTimeField(auto_now_add=True)),
                 ('modified', models.DateTimeField(auto_now=True)),
-                ('category', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='nerflix.Category')),
+                ('category', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='unab.Category')),
             ],
         ),
     ]

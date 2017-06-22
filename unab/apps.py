@@ -5,4 +5,4 @@ from django.apps import AppConfig
 
 
 class NerflixConfig(AppConfig):
-    name = 'nerflix'
+    name = 'unab'
