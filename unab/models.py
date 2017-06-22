@@ -27,6 +27,19 @@ class Movie(models.Model):
     def __str__(self):
         return self.name
 
+class Noticia(models.Model):
+    titulo = models.CharField(max_length=144)
+    contenido = models.TextField()
+    category = models.ForeignKey(Category)
+    sort_order = models.IntegerField()
+    created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
+    foto=models.ImageField(upload_to='/dev/null')
+
+
+    def __str__(self):
+        return self.name   
+
 
 # class Album(models.Model):
 #     name = models.CharField(max_length=144) 
