@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.forms import ModelForm
-from unab.models import Movie
-class MovieForm(ModelForm):
+from unab.models import Noticia
+class NoticiaForm(ModelForm):
     class Meta:
-        model = Movie
-        fields = ['name','description','anio','category','sort_order']
+        model = Noticia
+        fields = ['name','contenido','category']

@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from sorl.thumbnail import ImageField
 
 
     
@@ -14,31 +15,18 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
-class Movie(models.Model):
-    name = models.CharField(max_length=144)
-    description = models.TextField()
-    anio = models.PositiveIntegerField()
-    category = models.ForeignKey(Category)
-    sort_order = models.IntegerField()
-    created = models.DateTimeField(auto_now_add=True)
-    modified = models.DateTimeField(auto_now=True)
-
-
-    def __str__(self):
-        return self.name
-
 class Noticia(models.Model):
-    titulo = models.CharField(max_length=144)
+    name = models.CharField(max_length=20)
     contenido = models.TextField()
     category = models.ForeignKey(Category)
     sort_order = models.IntegerField()
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
-    foto=models.ImageField(upload_to='/dev/null')
-
-
     def __str__(self):
-        return self.name   
+        return self.name 
+
+class Foto(models.Model):
+    image = ImageField(upload_to='whatever')
 
 
 # class Album(models.Model):

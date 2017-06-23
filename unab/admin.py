@@ -2,21 +2,19 @@
 from __future__ import unicode_literals
 
 from django.contrib import admin
-from unab.models import Movie, Category, Noticia
+from unab.models import Category, Noticia, Foto
 from sorl.thumbnail.admin import AdminImageMixin
 
-class MovieAdmin(admin.ModelAdmin):
-    list_display = ('name','anio','sort_order','id')
-    list_filter = ('anio',)
-    list_search = ('name','anio')
-class Noticia(admin.ModelAdmin):
-    list_display = ('titulo','category','sort_order','id')
+class NoticiaAdmin(admin.ModelAdmin):
+    list_display = ('name','category','sort_order','id')
     list_filter = ('created',)
-    list_search = ('titulo',)
+    list_search = ('name',)
 
 class CategoryAdmin(admin.ModelAdmin):
     pass
+class FotoAdmin(AdminImageMixin, admin.ModelAdmin):
+    pass
 
-admin.site.register(Movie,MovieAdmin)
 admin.site.register(Category,CategoryAdmin)
 admin.site.register(Noticia,NoticiaAdmin)
+admin.site.register(Foto,FotoAdmin)

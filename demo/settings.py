@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'autofixture',
     'bootstrapform',
-    'unab'
+    'unab',
+    'sorl.thumbnail'
 ]
 
 MIDDLEWARE = [

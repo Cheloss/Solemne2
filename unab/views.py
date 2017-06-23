@@ -1,50 +1,28 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-from unab.models import Movie
+from unab.models import Noticia, Foto
 from django.shortcuts import render, get_object_or_404
-from unab.forms import MovieForm
+from unab.forms import NoticiaForm
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
+from sorl.thumbnail import get_thumbnail
 
+im = get_thumbnail(Foto.image, '500x300', crop='center', quality=99)
 
-def movie_list(request):
+def noticia_list(request):
     data = {}
 
-    data['object_list'] = Movie.objects.all().order_by('-id')
+    data['object_list'] = Noticia.objects.all().order_by('-created')
 
 
-    template_name = 'movie/movie_list.html'
+    template_name = 'noticia/noticia_list.html'
+    return render(request, template_name, data)
+
+def noticia_update(request, pk) :
+    data = {}
+
+    data['object_list'] = Noticia.objects.filter(pk=pk)
+    template_name = 'noticia/noticia_detalle.html'
     return render(request, template_name, data)
 
 
-def movie_form(request):
-
-    template_name = 'movie/movie_form.html'
-    form = MovieForm(request.POST or None)
-
-    if form.is_valid() :
-        form.save()
-        return HttpResponseRedirect(reverse('movie_list'))
-
-    return render(request, template_name, {'form': form})
-
-def movie_update(request, pk) :
-    template_name = 'movie/movie_form.html'
-    # movie = Movie.objects.get(pk=pk)
-    movie = get_object_or_404(Movie, pk=pk)
-    # select * from movie WHERE id = xx
-
-    form = MovieForm(request.POST or None, instance=movie)
-
-    if form.is_valid() :
-        form.save()
-        return HttpResponseRedirect(reverse('movie_list'))
-
-    return render(request, template_name, {'form': form})
-
-
-
-def movie_delete(request, pk) :
-    movie = get_object_or_404(Movie, pk=pk)
-    movie.delete()
-    return HttpResponseRedirect(reverse('movie_list'))
